@@ -1,0 +1,11 @@
+name = "aditi-vintage-folio"
+compatibility_date = "2024-01-01"
+
+# For Cloudflare Pages deployment
+[build]
+command = "npm run build"
+publish = "dist"
+
+# Environment variables (if needed)
+[env.production.vars]
+NODE_ENV = "production"
