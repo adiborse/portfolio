@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Code2, Palette, Database, Brain, Cloud, Smartphone, Globe, Shield } from "lucide-react";
 import { VintageCard } from "@/components/ui/vintage-card";
 import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const skillCategories = {
@@ -9,67 +10,69 @@ const skillCategories = {
     icon: Palette,
     title: "Frontend Development",
     skills: [
-      { name: "React.js" },
-      { name: "HTML/CSS" },
-      { name: "JavaScript" },
-      { name: "Bootstrap" },
-      { name: "Tailwind CSS" },
-      { name: "Figma" }
+      { name: "React.js", level: 90, experience: "2+ years" },
+      { name: "HTML/CSS", level: 95, experience: "3+ years" },
+      { name: "JavaScript", level: 88, experience: "2+ years" },
+      { name: "Bootstrap", level: 85, experience: "2+ years" },
+      { name: "Tailwind CSS", level: 80, experience: "1+ year" },
+      { name: "Figma", level: 92, experience: "2+ years" }
     ]
   },
   "backend": {
     icon: Database,
     title: "Backend Development",
     skills: [
-      { name: "Node.js" },
-      { name: "Express.js" },
-      { name: "Python" },
-      { name: "Flask" },
-      { name: "Spring Boot" },
-      { name: "RESTful APIs" }
+      { name: "Node.js", level: 85, experience: "2+ years" },
+      { name: "Express.js", level: 83, experience: "2+ years" },
+      { name: "Python", level: 88, experience: "2+ years" },
+      { name: "Flask", level: 80, experience: "1+ year" },
+      { name: "Spring Boot", level: 75, experience: "1+ year" },
+      { name: "RESTful APIs", level: 87, experience: "2+ years" }
     ]
   },
   "database": {
     icon: Database,
     title: "Database & Cloud",
     skills: [
-      { name: "MongoDB" },
-      { name: "MySQL" },
-      { name: "Google Cloud" },
-      { name: "Firebase" },
-      { name: "Docker" }
+      { name: "MongoDB", level: 85, experience: "2+ years" },
+      { name: "MySQL", level: 82, experience: "2+ years" },
+      { name: "Google Cloud", level: 78, experience: "1+ year" },
+      { name: "Firebase", level: 80, experience: "1+ year" },
+      { name: "Docker", level: 70, experience: "6+ months" }
     ]
   },
   "mobile": {
     icon: Smartphone,
     title: "Mobile Development",
     skills: [
-      { name: "Flutter" },
-      { name: "Dart" },
-      { name: "React Native" },
-      { name: "Mobile UI/UX" }
+      { name: "Flutter", level: 88, experience: "2+ years" },
+      { name: "Dart", level: 85, experience: "2+ years" },
+      { name: "React Native", level: 75, experience: "1+ year" },
+      { name: "Mobile UI/UX", level: 90, experience: "2+ years" }
     ]
   },
   "ai": {
     icon: Brain,
     title: "AI/ML & Data Science",
     skills: [
-      { name: "TensorFlow" },
-      { name: "PyTorch" },
-      { name: "Computer Vision" },
-      { name: "NLP" },
-      { name: "YOLO" },
-      { name: "OpenCV" }
+      { name: "TensorFlow", level: 82, experience: "1+ year" },
+      { name: "PyTorch", level: 78, experience: "1+ year" },
+      { name: "Computer Vision", level: 85, experience: "1+ year" },
+      { name: "NLP", level: 80, experience: "1+ year" },
+      { name: "YOLO", level: 75, experience: "6+ months" },
+      { name: "OpenCV", level: 83, experience: "1+ year" }
     ]
   },
   "tools": {
     icon: Cloud,
     title: "Tools & Technologies",
     skills: [
-      { name: "Git/GitHub" },
-      { name: "VS Code" },
-      { name: "Canva" },
-      { name: "Blockchain" }
+      { name: "Git/GitHub", level: 90, experience: "3+ years" },
+      { name: "VS Code", level: 95, experience: "3+ years" },
+      { name: "Postman", level: 85, experience: "2+ years" },
+      { name: "Canva", level: 88, experience: "2+ years" },
+      { name: "Blockchain", level: 70, experience: "6+ months" },
+      { name: "Agile/Scrum", level: 82, experience: "1+ year" }
     ]
   }
 };
@@ -114,19 +117,27 @@ export const SkillsSection = () => {
                   </div>
                   <div>
                     <h3 className="font-display text-2xl font-bold text-foreground">{category.title}</h3>
-                    <p className="font-cormorant text-muted-foreground">Skills and technologies I work with</p>
+                    <p className="font-cormorant text-muted-foreground">Professional proficiency and experience</p>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-3 justify-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {category.skills.map((skill, index) => (
-                    <Badge
-                      key={index}
-                      variant="outline"
-                      className="px-4 py-2 font-cormorant text-sm border-vintage-gold/30 text-foreground bg-vintage-cream/30 hover:bg-vintage-gold/20 hover:border-vintage-gold transition-all duration-300 cursor-default"
-                    >
-                      {skill.name}
-                    </Badge>
+                    <div key={index} className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <span className="font-cormorant font-semibold text-foreground">{skill.name}</span>
+                        <div className="flex items-center gap-2">
+                          <Badge variant="outline" className="text-xs font-cormorant">
+                            {skill.experience}
+                          </Badge>
+                          <span className="text-sm text-vintage-gold font-cormorant">{skill.level}%</span>
+                        </div>
+                      </div>
+                      <Progress 
+                        value={skill.level} 
+                        className="h-2 bg-vintage-cream"
+                      />
+                    </div>
                   ))}
                 </div>
               </VintageCard>

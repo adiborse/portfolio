@@ -3,19 +3,22 @@ import { Calendar, MapPin, Building, Award } from "lucide-react";
 import { VintageCard } from "@/components/ui/vintage-card";
 import { Badge } from "@/components/ui/badge";
 
-interface Experience {
-  title: string;
-  company: string;
-  location: string;
-  period: string;
-  type: string;
-  description: string;
-  achievements: string[];
-  technologies: string[];
-  image?: string;
-}
-
-const experiences: Experience[] = [
+const experiences = [
+  {
+    title: "Software Engineer & AI Developer",
+    company: "Freelance & Project Work",
+    location: "Remote",
+    period: "2023 - Present",
+    type: "Professional Experience",
+    description: "Leading development of AI-powered applications and full-stack solutions. Specialized in banking systems, safety applications, and educational platforms with focus on user experience and scalability.",
+    achievements: [
+      "Developed AI-powered banking assistant for Union Bank",
+      "Created safety analytics system impacting 1M+ users",
+      "Built virtual learning platform for peer collaboration",
+      "Implemented facial recognition and identity verification systems"
+    ],
+    technologies: ["React", "Flutter", "Python", "AI/ML", "Cloud Computing"]
+  },
   {
     title: "B.E Information Technology",
     company: "Datta Meghe College of Engineering",
@@ -29,28 +32,25 @@ const experiences: Experience[] = [
       "Leadership roles in technical projects and team collaborations",
       "Research interests in AI/ML and scalable system design"
     ],
-    technologies: ["Data Structures", "Algorithms", "System Design", "Database Management"],
-    image: "/images/Screenshot 2025-07-21 205808.png"
+    technologies: ["Data Structures", "Algorithms", "System Design", "Database Management"]
   },
   {
-    title: "Smart India Hackathon Winner 2024",
-    company: "Government of India - BIL",
+    title: "Smart India Hackathon Winner",
+    company: "Government of India",
     location: "National Level",
     period: "2024",
     type: "Achievement",
-    description: "Winner of Smart India Hackathon 2024 for women safety problem statement given by BIL (Bharat Electronics Limited). Led a team to develop an AI-powered real-time safety analytics system that enhances public security measures with special focus on women safety. The solution was recognized for its innovation and potential impact on national security.",
+    description: "Led a team to develop an AI-powered real-time safety analytics system that enhances public security measures. The solution was recognized for its innovation and potential impact on national security.",
     achievements: [
-      "National level winner for women safety AI solution",
+      "National level recognition for innovative AI solution",
       "Led cross-functional team of 6 developers and designers",
-      "Developed scalable system architecture for real-time safety analytics",
-      "Presented solution to government officials and BIL representatives",
-      "Created comprehensive women safety monitoring system"
+      "Developed scalable system architecture for real-time analytics",
+      "Presented solution to government officials and industry experts"
     ],
-    technologies: ["AI", "Real-time Analytics", "Computer Vision", "Women Safety Tech", "BIL Integration"],
-    image: "/images/image.png"
+    technologies: ["AI", "Real-time Analytics", "Computer Vision", "Public Safety Tech"]
   },
   {
-    title: "Union Bank's IdeaHackathon",
+    title: "AI Innovation Developer",
     company: "Union Bank of India Hackathon",
     location: "Mumbai, India",
     period: "2024",
@@ -62,44 +62,22 @@ const experiences: Experience[] = [
       "Integrated blockchain technology for enhanced security",
       "Developed user-friendly mobile interface for banking staff"
     ],
-    technologies: ["Flutter", "Facial Recognition", "Blockchain", "Spring Boot", "Cloud Security"],
-    image: "/images/unionbank.jpg"
+    technologies: ["Flutter", "Facial Recognition", "Blockchain", "Spring Boot", "Cloud Security"]
   },
   {
-    title: "IDE Bootcamp - Raksha Innovation",
-    company: "Ministry of Education & Wadhwani Foundation",
-    location: "Geetanjali Institute, Udaipur",
-    period: "February 17-21, 2025",
+    title: "Technical Project Lead",
+    company: "Academic & Personal Projects",
+    location: "Mumbai, India",
+    period: "2022 - 2024",
     type: "Leadership",
-    description: "Selected for the prestigious IDE Bootcamp (Edition 2, Phase II) organized by Ministry of Education, Government of India, in collaboration with Wadhwani Foundation. Led Raksha, our innovative women safety analytics solution, through a comprehensive business transformation program focusing on market validation, investor pitching, and scalability strategies.",
+    description: "Led multiple technical projects from conception to deployment, focusing on real-world problem solving through innovative technology solutions. Managed teams and coordinated with stakeholders.",
     achievements: [
-      "Selected among top teams for prestigious government bootcamp program",
-      "Led cross-functional team of 6 members in business strategy development",
-      "Mastered investor pitching and articulated business potential effectively",
-      "Refined Raksha's value proposition to align with real-world market needs",
-      "Developed comprehensive scalability and sustainability framework",
-      "Successfully represented Datta Meghe College of Engineering on national platform"
+      "Successfully delivered 5+ major projects",
+      "Mentored junior developers and designers",
+      "Established best practices for code quality and documentation",
+      "Coordinated with cross-functional teams and stakeholders"
     ],
-    technologies: ["Business Strategy", "Market Validation", "Investor Pitching", "Scalability Planning", "Women Safety Analytics", "Entrepreneurship"],
-    image: "/images/WhatsApp Image 2025-06-18 at 9.21.37 PM.jpeg"
-  },
-  {
-    title: "LenDenClub AI Hackathon Finalist",
-    company: "LenDenClub - The Matrix Protocol",
-    location: "India",
-    period: "2024",
-    type: "Competition",
-    description: "Team SHILEDAR reached the final round of LenDenClub's The Matrix Protocol AI Hackathon, standing among the top teams out of 1800+ participants from across India. Built VoxGenie, a real-time multilingual AI voice assistant to simplify P2P lending for diverse Indian users in just 48 hours.",
-    achievements: [
-      "Reached finals among top teams from 1800+ participants nationwide",
-      "Led UI/UX design and delivered final presentation to judges",
-      "Created intuitive, inclusive interface bridging users to financial literacy",
-      "Developed multilingual AI assistant supporting code-mixed conversations",
-      "Implemented biometric authentication with voice and face recognition",
-      "Built responsive system optimized for low bandwidth conditions"
-    ],
-    technologies: ["UI/UX Design", "AI Voice Assistant", "Multilingual NLP", "Biometric Auth", "Real-time Systems", "Financial Technology"],
-    image: "/images/lenden.jpg"
+    technologies: ["Project Management", "Team Leadership", "Agile Methodology", "Full-Stack Development"]
   }
 ];
 
@@ -137,159 +115,68 @@ export const ExperienceTimeline = () => {
                 {/* Content */}
                 <div className={`w-full md:w-1/2 ml-20 md:ml-0 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
                   <VintageCard className="p-6 group hover:shadow-gold transition-all duration-500" textured>
-                    {experience.image ? (
-                      // Layout with image
-                      <div className="space-y-4">
-                        {/* Top Section: Image and Basic Info Side by Side */}
-                        <div className="flex flex-col lg:flex-row gap-4">
-                          {/* Image Section */}
-                          <div className="lg:w-1/2 flex-shrink-0">
-                            <div className="rounded-xl overflow-hidden shadow-lg">
-                              <img
-                                src={experience.image}
-                                alt={experience.title}
-                                className="w-full h-56 lg:h-64 object-contain bg-vintage-cream/30 transition-transform duration-500 group-hover:scale-102"
-                              />
-                            </div>
-                          </div>
-                          
-                          {/* Header and Description Section */}
-                          <div className="lg:w-1/2 flex flex-col">
-                            {/* Header */}
-                            <div className="flex items-start justify-between mb-3">
-                              <div className="flex-1">
-                                <h3 className="font-display text-lg lg:text-xl font-bold text-foreground group-hover:text-vintage-gold transition-colors duration-300">
-                                  {experience.title}
-                                </h3>
-                                <div className="flex items-center gap-2 text-muted-foreground font-cormorant mt-1">
-                                  <Building className="h-3 w-3 lg:h-4 lg:w-4" />
-                                  <span className="text-sm">{experience.company}</span>
-                                </div>
-                                <div className="flex flex-col lg:flex-row lg:items-center gap-1 lg:gap-4 mt-1">
-                                  <div className="flex items-center gap-1 text-xs lg:text-sm text-muted-foreground font-cormorant">
-                                    <Calendar className="h-3 w-3 lg:h-4 lg:w-4" />
-                                    <span>{experience.period}</span>
-                                  </div>
-                                  <div className="flex items-center gap-1 text-xs lg:text-sm text-muted-foreground font-cormorant">
-                                    <MapPin className="h-3 w-3 lg:h-4 lg:w-4" />
-                                    <span>{experience.location}</span>
-                                  </div>
-                                </div>
-                              </div>
-                              <Badge 
-                                variant="secondary" 
-                                className="bg-vintage-gold/20 text-vintage-gold font-cormorant text-xs"
-                              >
-                                {experience.type}
-                              </Badge>
-                            </div>
-
-                            {/* Description */}
-                            <p className="text-muted-foreground font-cormorant leading-relaxed text-xs lg:text-sm">
-                              {experience.description}
-                            </p>
-                          </div>
+                    {/* Header */}
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex-1">
+                        <h3 className="font-display text-xl font-bold text-foreground group-hover:text-vintage-gold transition-colors duration-300">
+                          {experience.title}
+                        </h3>
+                        <div className="flex items-center gap-2 text-muted-foreground font-cormorant mt-1">
+                          <Building className="h-4 w-4" />
+                          <span>{experience.company}</span>
                         </div>
-
-                        {/* Bottom Section: Full Width Achievements and Technologies */}
-                        <div className="space-y-3">
-                          {/* Achievements - Full Width */}
-                          <div className="space-y-2">
-                            <h4 className="font-display font-semibold text-foreground flex items-center gap-2">
-                              <Award className="h-4 w-4 text-vintage-gold" />
-                              Key Achievements
-                            </h4>
-                            <ul className="space-y-1">
-                              {experience.achievements.map((achievement, achIndex) => (
-                                <li key={achIndex} className="text-sm text-muted-foreground font-cormorant flex items-start gap-2">
-                                  <span className="w-1.5 h-1.5 bg-vintage-gold rounded-full mt-2 flex-shrink-0"></span>
-                                  {achievement}
-                                </li>
-                              ))}
-                            </ul>
+                        <div className="flex items-center gap-4 mt-2">
+                          <div className="flex items-center gap-1 text-sm text-muted-foreground font-cormorant">
+                            <Calendar className="h-4 w-4" />
+                            <span>{experience.period}</span>
                           </div>
-
-                          {/* Technologies - Full Width */}
-                          <div className="flex flex-wrap gap-2">
-                            {experience.technologies.map((tech, techIndex) => (
-                              <Badge
-                                key={techIndex}
-                                variant="outline"
-                                className="text-xs font-cormorant border-vintage-gold/30 text-foreground"
-                              >
-                                {tech}
-                              </Badge>
-                            ))}
+                          <div className="flex items-center gap-1 text-sm text-muted-foreground font-cormorant">
+                            <MapPin className="h-4 w-4" />
+                            <span>{experience.location}</span>
                           </div>
                         </div>
                       </div>
-                    ) : (
-                      // Layout without image - original layout
-                      <>
-                        {/* Header */}
-                        <div className="flex items-start justify-between mb-4">
-                          <div className="flex-1">
-                            <h3 className="font-display text-xl font-bold text-foreground group-hover:text-vintage-gold transition-colors duration-300">
-                              {experience.title}
-                            </h3>
-                            <div className="flex items-center gap-2 text-muted-foreground font-cormorant mt-1">
-                              <Building className="h-4 w-4" />
-                              <span>{experience.company}</span>
-                            </div>
-                            <div className="flex items-center gap-4 mt-2">
-                              <div className="flex items-center gap-1 text-sm text-muted-foreground font-cormorant">
-                                <Calendar className="h-4 w-4" />
-                                <span>{experience.period}</span>
-                              </div>
-                              <div className="flex items-center gap-1 text-sm text-muted-foreground font-cormorant">
-                                <MapPin className="h-4 w-4" />
-                                <span>{experience.location}</span>
-                              </div>
-                            </div>
-                          </div>
-                          <Badge 
-                            variant="secondary" 
-                            className="bg-vintage-gold/20 text-vintage-gold font-cormorant"
-                          >
-                            {experience.type}
-                          </Badge>
-                        </div>
+                      <Badge 
+                        variant="secondary" 
+                        className="bg-vintage-gold/20 text-vintage-gold font-cormorant"
+                      >
+                        {experience.type}
+                      </Badge>
+                    </div>
 
-                        {/* Description */}
-                        <p className="text-muted-foreground font-cormorant leading-relaxed mb-4 text-sm">
-                          {experience.description}
-                        </p>
+                    {/* Description */}
+                    <p className="text-muted-foreground font-cormorant leading-relaxed mb-4">
+                      {experience.description}
+                    </p>
 
-                        {/* Achievements */}
-                        <div className="space-y-2 mb-4">
-                          <h4 className="font-display font-semibold text-foreground flex items-center gap-2">
-                            <Award className="h-4 w-4 text-vintage-gold" />
-                            Key Achievements
-                          </h4>
-                          <ul className="space-y-1">
-                            {experience.achievements.map((achievement, achIndex) => (
-                              <li key={achIndex} className="text-sm text-muted-foreground font-cormorant flex items-start gap-2">
-                                <span className="w-1.5 h-1.5 bg-vintage-gold rounded-full mt-2 flex-shrink-0"></span>
-                                {achievement}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                    {/* Achievements */}
+                    <div className="space-y-2 mb-4">
+                      <h4 className="font-display font-semibold text-foreground flex items-center gap-2">
+                        <Award className="h-4 w-4 text-vintage-gold" />
+                        Key Achievements
+                      </h4>
+                      <ul className="space-y-1">
+                        {experience.achievements.map((achievement, achIndex) => (
+                          <li key={achIndex} className="text-sm text-muted-foreground font-cormorant flex items-start gap-2">
+                            <span className="w-1.5 h-1.5 bg-vintage-gold rounded-full mt-2 flex-shrink-0"></span>
+                            {achievement}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                        {/* Technologies */}
-                        <div className="flex flex-wrap gap-2">
-                          {experience.technologies.map((tech, techIndex) => (
-                            <Badge
-                              key={techIndex}
-                              variant="outline"
-                              className="text-xs font-cormorant border-vintage-gold/30 text-foreground"
-                            >
-                              {tech}
-                            </Badge>
-                          ))}
-                        </div>
-                      </>
-                    )}
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2">
+                      {experience.technologies.map((tech, techIndex) => (
+                        <Badge
+                          key={techIndex}
+                          variant="outline"
+                          className="text-xs font-cormorant border-vintage-gold/30 text-foreground"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
                   </VintageCard>
                 </div>
 

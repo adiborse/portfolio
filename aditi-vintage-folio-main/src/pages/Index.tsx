@@ -45,8 +45,20 @@ const Index = () => {
       {/* Experience Timeline */}
       <ExperienceTimeline />
       
+      {/* Education Section */}
+      <EducationSection />
+      
+      {/* Certifications Section */}
+      <CertificationsSection />
+      
       {/* Achievements Section */}
       <AchievementsSection />
+      
+      {/* Blog Section */}
+      <BlogSection searchQuery={searchQuery} />
+      
+      {/* Testimonials Section */}
+      <TestimonialsSection />
       
       {/* Contact Section */}
       <ContactSection />

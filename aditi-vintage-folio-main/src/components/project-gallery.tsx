@@ -12,7 +12,6 @@ const projects = [
     title: "VyomAssist - AI-Powered Banking Support System",
     description: "Built a smart assistant for Union Bank's Vyom app to help customers get instant support through chat, voice, and video. Integrated face recognition and Aadhaar-based verification to ensure secure login and authentication.",
     image: project1,
-    video: "/vid/vyom.mp4",
     tags: ["Flutter", "React", "Node.js", "Spring Boot", "Flask", "Google Cloud", "TensorFlow", "Blockchain"],
     category: "AI/ML",
     year: "2024",
@@ -21,11 +20,10 @@ const projects = [
   },
   {
     id: 2,
-    title: "Lokyatri",
-    description: "Lok Yatri is an AI-powered travel companion app designed to help travelers explore destinations like a local. It connects tourists with authentic local experiences, hidden gems, and culturally immersive activities while ensuring seamless, stress-free navigation.",
+    title: "StudySync - Virtual Learning Platform",
+    description: "Created a virtual learning platform for students from diverse fields to collaborate and study together. Enabled group discussions, doubt clearing, and project collaboration to promote peer learning.",
     image: project2,
-    video: "/vid/lokyatri.mp4",
-    tags: ["Web Socket", "Flutter", "Python", "AWS Bedrock", "Qdrant", "+3 more"],
+    tags: ["HTML", "CSS", "JavaScript", "Bootstrap", "Node.js", "Express", "MongoDB"],
     category: "Web Platform",
     year: "2024",
     link: "#",
@@ -36,7 +34,6 @@ const projects = [
     title: "Raksha - Mobile Safety App",
     description: "Developed a mobile safety app with real-time alerts, live tracking, and community support. Built a web platform for law enforcement with video surveillance, weapon detection, and vehicle tracking.",
     image: project1,
-    video: "/vid/raksha vidd.mp4",
     tags: ["Flutter", "Dart", "MERN Stack", "AI", "ML", "Computer Vision"],
     category: "Mobile App",
     year: "2023",
@@ -48,9 +45,8 @@ const projects = [
     title: "AI-Powered Safety Analytics System",
     description: "Led the development of an AI-powered real-time safety analytics system for Smart India Hackathon 2024, enhancing public security measures and impacting over a million users nationwide.",
     image: project2,
-    video: "/vid/Untitled video - Made with Clipchamp.mp4",
     tags: ["AI", "Computer Vision", "Real-time Analytics", "Public Safety", "Python"],
-    category: "Web Platform",
+    category: "AI/ML",
     year: "2024",
     link: "#",
     github: "#"
@@ -66,24 +62,6 @@ interface ProjectGalleryProps {
 export const ProjectGallery = ({ searchQuery }: ProjectGalleryProps) => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-  const [playingVideo, setPlayingVideo] = useState<number | null>(null);
-
-  const handleVideoPlay = (projectId: number) => {
-    const videoElement = document.getElementById(`video-${projectId}`) as HTMLVideoElement;
-    if (videoElement) {
-      if (playingVideo === projectId) {
-        videoElement.pause();
-        setPlayingVideo(null);
-      } else {
-        // Set start time for specific videos
-        if (projectId === 4) { // AI-Powered Safety Analytics System
-          videoElement.currentTime = 58; // Start from 0:58 seconds
-        }
-        videoElement.play();
-        setPlayingVideo(projectId);
-      }
-    }
-  };
 
   const filteredProjects = projects.filter(project => {
     const matchesCategory = selectedCategory === "All" || project.category === selectedCategory;
@@ -138,42 +116,24 @@ export const ProjectGallery = ({ searchQuery }: ProjectGalleryProps) => {
               onMouseLeave={() => setHoveredProject(null)}
             >
               <div className="relative">
-                {/* Project Image/Video */}
-                <div className="aspect-[4/3] overflow-hidden rounded-t-lg bg-black flex items-center justify-center">
-                  {project.video ? (
-                    <video
-                      id={`video-${project.id}`}
-                      src={project.video}
-                      className="w-full h-full object-contain transition-transform duration-700 ease-silk"
-                      controls
-                      muted
-                      loop
-                      onPlay={() => setPlayingVideo(project.id)}
-                      onPause={() => setPlayingVideo(null)}
-                    />
-                  ) : (
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 ease-silk group-hover:scale-110"
-                    />
-                  )}
+                {/* Project Image */}
+                <div className="aspect-[4/3] overflow-hidden rounded-t-lg">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-silk group-hover:scale-110"
+                  />
                   
                   {/* Hover Overlay */}
                   <div className={`
                     absolute inset-0 bg-vintage-gold/90 backdrop-blur-sm
                     flex items-center justify-center gap-4
                     transition-opacity duration-500 ease-silk
-                    ${hoveredProject === project.id && playingVideo !== project.id ? 'opacity-100' : 'opacity-0'}
+                    ${hoveredProject === project.id ? 'opacity-100' : 'opacity-0'}
                   `}>
-                    <Button 
-                      size="sm" 
-                      variant="secondary" 
-                      className="rounded-full"
-                      onClick={() => project.video && handleVideoPlay(project.id)}
-                    >
+                    <Button size="sm" variant="secondary" className="rounded-full">
                       <Eye className="h-4 w-4 mr-2" />
-                      {project.video ? (playingVideo === project.id ? 'Pause' : 'Play') : 'View'}
+                      View
                     </Button>
                     <Button size="sm" variant="secondary" className="rounded-full">
                       <ExternalLink className="h-4 w-4 mr-2" />
