@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Vintage Luxury Palette */
+    --background: 42 25% 96%; /* Cream */
+    --foreground: 25 15% 25%; /* Dark vintage brown */
+
+    --card: 40 20% 94%; /* Light champagne */
+    --card-foreground: 25 15% 25%;
+
+    --popover: 40 20% 94%;
+    --popover-foreground: 25 15% 25%;
+
+    --primary: 145 25% 40%; /* Olive green */
+    --primary-foreground: 42 25% 96%;
+
+    --secondary: 350 35% 75%; /* Dusty rose */
+    --secondary-foreground: 25 15% 25%;
+
+    --muted: 40 15% 88%; /* Muted champagne */
+    --muted-foreground: 25 10% 55%;
+
+    --accent: 45 70% 65%; /* Gold accent */
+    --accent-foreground: 25 15% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 42 25% 96%;
+
+    --border: 40 20% 85%; /* Soft champagne border */
+    --input: 40 20% 90%;
+    --ring: 45 70% 65%; /* Gold ring */
+
+    /* Custom vintage colors */
+    --champagne: 42 30% 88%;
+    --dusty-rose: 350 35% 75%;
+    --olive-green: 145 25% 40%;
+    --vintage-gold: 45 70% 65%;
+    --cream: 42 25% 96%;
+    --parchment: 40 25% 92%;
+    
+    /* Gradients */
+    --gradient-vintage: linear-gradient(135deg, hsl(var(--champagne)), hsl(var(--cream)));
+    --gradient-luxury: linear-gradient(135deg, hsl(var(--dusty-rose)), hsl(var(--vintage-gold)));
+    
+    /* Shadows */
+    --shadow-vintage: 0 8px 32px hsl(var(--olive-green) / 0.1);
+    --shadow-gold: 0 4px 20px hsl(var(--vintage-gold) / 0.2);
+    
+    /* Transitions */
+    --transition-silk: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Luxury Noir Mode */
+    --background: 0 0% 8%; /* Rich black */
+    --foreground: 45 70% 85%; /* Gold text */
+
+    --card: 0 0% 12%; /* Dark card */
+    --card-foreground: 45 70% 85%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 45 70% 85%;
+
+    --primary: 45 70% 65%; /* Gold primary */
+    --primary-foreground: 0 0% 8%;
+
+    --secondary: 350 25% 25%; /* Dark dusty rose */
+    --secondary-foreground: 45 70% 85%;
+
+    --muted: 0 0% 15%; /* Dark muted */
+    --muted-foreground: 45 30% 65%;
+
+    --accent: 350 35% 55%; /* Rich dusty rose */
+    --accent-foreground: 45 70% 85%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 45 70% 85%;
+
+    --border: 0 0% 20%; /* Dark border */
+    --input: 0 0% 15%;
+    --ring: 45 70% 65%; /* Gold ring */
+
+    /* Dark mode custom colors */
+    --champagne: 0 0% 18%;
+    --dusty-rose: 350 25% 35%;
+    --olive-green: 145 15% 30%;
+    --vintage-gold: 45 70% 65%;
+    --cream: 0 0% 12%;
+    --parchment: 0 0% 15%;
+    
+    /* Dark gradients */
+    --gradient-vintage: linear-gradient(135deg, hsl(var(--champagne)), hsl(var(--cream)));
+    --gradient-luxury: linear-gradient(135deg, hsl(var(--dusty-rose)), hsl(var(--vintage-gold)));
+    
+    /* Dark shadows */
+    --shadow-vintage: 0 8px 32px hsl(0 0% 0% / 0.3);
+    --shadow-gold: 0 4px 20px hsl(var(--vintage-gold) / 0.3);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-cormorant;
+    transition: var(--transition-silk);
+  }
+
+  /* Vintage typography classes */
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-cormorant {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* Vintage textures and effects */
+  .vintage-texture {
+    background-image: 
+      radial-gradient(circle at 1px 1px, hsl(var(--vintage-gold) / 0.15) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+
+  .parchment-bg {
+    background: linear-gradient(135deg, 
+      hsl(var(--parchment)), 
+      hsl(var(--champagne))
+    );
+  }
+
+  /* Silk transitions */
+  .silk-transition {
+    transition: var(--transition-silk);
+  }
+
+  /* Vintage shadows */
+  .shadow-vintage {
+    box-shadow: var(--shadow-vintage);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+}
