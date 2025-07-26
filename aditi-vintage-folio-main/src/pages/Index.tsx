@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import { HeroSection } from "@/components/hero-section";
 import { ProjectGallery } from "@/components/project-gallery";
 import { AboutSection } from "@/components/about-section";
@@ -55,7 +55,7 @@ const Index = () => {
       <footer className="py-8 px-6 border-t border-vintage-gold/20 bg-vintage-parchment/30">
         <div className="max-w-7xl mx-auto text-center">
           <p className="font-cormorant text-muted-foreground">
-             2024 Aditi Borse. Crafted with love and attention to detail.
+            © 2024 Aditi Borse. Crafted with love and attention to detail.
           </p>
         </div>
       </footer>
